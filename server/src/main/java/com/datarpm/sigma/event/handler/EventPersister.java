@@ -17,6 +17,8 @@
 package com.datarpm.sigma.event.handler;
 
 /**
+ * Persister for {@code com.datarpm.sigma.event.core.Event}
+ * 
  * @author vinay
  *
  */

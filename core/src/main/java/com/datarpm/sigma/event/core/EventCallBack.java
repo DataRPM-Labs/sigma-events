@@ -17,6 +17,8 @@
 package com.datarpm.sigma.event.core;
 
 /**
+ * Callback interface for Events.
+ * 
  * @author vishal
  *
  */

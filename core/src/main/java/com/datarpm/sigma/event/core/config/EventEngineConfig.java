@@ -19,6 +19,8 @@ package com.datarpm.sigma.event.core.config;
 import java.util.Properties;
 
 /**
+ * Holder for event engine configuration properties.
+ * 
  * @author vinay
  *
  */
@@ -26,14 +28,23 @@ public class EventEngineConfig {
 
   public static final EventEngineConfig INSTANCE = new EventEngineConfig();
 
+  /**
+   * @return Server configurations
+   */
   public Properties getServerConfig() {
     return null;
   }
 
+  /**
+   * @return MessageQueue configurations
+   */
   public Properties getMQChannelConfig() {
     return null;
   }
 
+  /**
+   * @return Event Archiver configurations
+   */
   public Properties getArchiverConfig() {
     return null;
   }

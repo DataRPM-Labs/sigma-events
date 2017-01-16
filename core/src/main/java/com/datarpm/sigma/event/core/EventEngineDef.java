@@ -24,7 +24,7 @@ interface EventEngineDef {
 
   public void generateEvent(Event event);
 
-  public RegistryId addListner(EventMatchFilter matchFilter, EventCallBack callback);
+  public RegistryId addListener(EventMatchFilter matchFilter, EventCallBack callback);
 
-  public void removeListner(RegistryId registryId);
+  public void removeListener(RegistryId registryId);
 }

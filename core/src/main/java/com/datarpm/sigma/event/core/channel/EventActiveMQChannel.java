@@ -116,7 +116,7 @@ class EventActiveMQChannel implements EventChannel, MessageListener {
   }
 
   @Override
-  public void registerListner(RegistryId registryId, EventCallBack callback) {
+  public void registerListener(RegistryId registryId, EventCallBack callback) {
     registryWriteLock.lock();
     try {
       registry.put(registryId, callback);
@@ -149,7 +149,7 @@ class EventActiveMQChannel implements EventChannel, MessageListener {
   }
 
   @Override
-  public void removeListner(RegistryId registryId) {
+  public void removeListener(RegistryId registryId) {
     registryWriteLock.lock();
     try {
       registry.remove(registryId);

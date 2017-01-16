@@ -21,6 +21,8 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
+ * Holds an event.
+ * 
  * @author vishal
  *
  */

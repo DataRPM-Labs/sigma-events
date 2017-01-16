@@ -19,6 +19,9 @@ package com.datarpm.sigma.event.core;
 import com.datarpm.sigma.event.core.channel.EventChannel;
 
 /**
+ * Event Engine which exposes APIs to generate events, add and remove listeners
+ * for call backs.
+ * 
  * @author vishal
  *
  */
@@ -37,9 +40,9 @@ public class EventEngine implements EventEngineDef {
   }
 
   @Override
-  public RegistryId addListner(final EventMatchFilter matchFilter, final EventCallBack callback) {
+  public RegistryId addListener(final EventMatchFilter matchFilter, final EventCallBack callback) {
     RegistryId registryId = new RegistryId();
-    eventChannel.registerListner(registryId, new EventCallBack() {
+    eventChannel.registerListener(registryId, new EventCallBack() {
       @Override
       public void onEvent(Event event) {
         if (matchFilter.allow(event.getHeader())) {
@@ -51,7 +54,7 @@ public class EventEngine implements EventEngineDef {
   }
 
   @Override
-  public void removeListner(RegistryId registryId) {
-    eventChannel.removeListner(registryId);
+  public void removeListener(RegistryId registryId) {
+    eventChannel.removeListener(registryId);
   }
 }

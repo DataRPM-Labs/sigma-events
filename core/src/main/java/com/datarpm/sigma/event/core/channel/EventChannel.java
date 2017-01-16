@@ -29,7 +29,7 @@ public interface EventChannel {
 
   public void publishEvent(Event event);
 
-  public void registerListner(RegistryId registryId, EventCallBack callback);
+  public void registerListener(RegistryId registryId, EventCallBack callback);
 
-  public void removeListner(RegistryId registryId);
+  public void removeListener(RegistryId registryId);
 }
