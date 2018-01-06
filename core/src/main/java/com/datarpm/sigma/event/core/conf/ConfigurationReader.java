@@ -104,7 +104,7 @@ public class ConfigurationReader {
 
   private URL configFilePath(String siteXMLFilePath) throws MalformedURLException {
 
-    String configDir = System.getenv("EVENTENGINE_CONF_DIR");
+    String configDir = System.getenv("SIGMA_EVENTENGINE_CONF_DIR");
     if (configDir != null && !configDir.trim().isEmpty()) {
       File f = new File(configDir + File.separator + siteXMLFilePath);
       if (f.exists()) {
@@ -112,7 +112,7 @@ public class ConfigurationReader {
       }
     }
 
-    String eventEngineHome = System.getenv("EVENTENGINE_HOME");
+    String eventEngineHome = System.getenv("SIGMA_EVENTENGINE_HOME");
     if (eventEngineHome != null && !eventEngineHome.trim().isEmpty()) {
       File f = new File(
           eventEngineHome + File.separator + "conf" + File.separator + siteXMLFilePath);

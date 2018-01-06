@@ -2,14 +2,14 @@
  * Copyright 2017 DataRPM
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License.  You may obtain a copy
- * of the License at
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  * 
- *   http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
@@ -35,6 +35,12 @@ public class QueryBuilder<E> {
     this.entityClass = entityClass;
     tm = com.arjuna.ats.jta.TransactionManager.transactionManager();
     Map<String, String> properties = new PersistencePropertyProvider().preparePersistenceConfig();
+    properties.put("hibernate.search.default.directory_provider", "filesystem");
+    String indexPath = "./cache/index/";
+    if (System.getenv("SIGMA_EVENTENGINE_HOME") != null) {
+      indexPath = System.getenv("SIGMA_EVENTENGINE_HOME") + "/cache/index/";
+    }
+    properties.put("hibernate.search.default.indexBase", indexPath);
     emf = Persistence.createEntityManagerFactory("event-engine-jpa", properties);
   }
 

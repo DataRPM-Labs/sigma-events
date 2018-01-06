@@ -22,18 +22,8 @@
     <persistence-unit name="event-engine-jpa" transaction-type="JTA">
         <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
         <properties>
-        		<!-- MongoDB -->
-        		<!-- 
-            <property name="hibernate.ogm.datastore.provider" value="mongodb"/>
-            <property name="hibernate.ogm.datastore.host" value="localhost"/>
-            <property name="hibernate.ogm.datastore.port" value="27017"/>
-            <property name="hibernate.ogm.datastore.database" value="events_dev"/>
-              -->
-              
-             <!-- Ehcache -->
-             <!-- 
-             <property name="hibernate.ogm.datastore.provider" value="ehcache"/>
-              -->
+        		<property name="hibernate.search.default.directory_provider" value="filesystem" />
+			<property name="hibernate.search.default.indexBase" value="$SIGMA_EVENTENGINE_HOME/cache/index/" />
         </properties>
     </persistence-unit>
 </persistence>
