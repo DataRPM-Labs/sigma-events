@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+  Copyright 2017 DataRPM
+  
+  Licensed under the Apache License, Version 2.0 (the "License"); you may not
+  use this file except in compliance with the License.  You may obtain a copy
+  of the License at
+  
+    http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+  License for the specific language governing permissions and limitations under
+  the License.
+-->
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+	<property>
+		<name>events.server.host</name>
+		<value>localhost</value>
+	</property>
+	<property>
+		<name>events.server.rest.port</name>
+		<value>8081</value>
+	</property>
+	<property>
+		<name>events.server.websocket.port</name>
+		<value>8082</value>
+	</property>
+	<property>
+		<name>events.server.gateway.kong.enabled</name>
+		<value>false</value>
+	</property>
+	<property>
+		<name>events.server.gateway.kong.admin.host</name>
+		<value>127.0.0.1</value>
+	</property>
+	<property>
+		<name>events.server.gateway.kong.admin.port</name>
+		<value>8101</value>
+	</property>
+</configuration>
