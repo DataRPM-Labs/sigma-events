@@ -19,5 +19,5 @@ scriptHome="`cd "$scriptHome"; pwd`"
 cd $scriptHome/../;
 projectHome=$scriptHome/../
 
-mvn clean install
+mvn clean install -Dmaven.test.skip=true
 cd $projectHome/server/web && npm update && grunt

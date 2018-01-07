@@ -2,14 +2,14 @@
  * Copyright 2017 DataRPM
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License.  You may obtain a copy
- * of the License at
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  * 
- *   http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
@@ -21,6 +21,8 @@ package com.datarpm.sigma.event;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import org.apache.activemq.broker.BrokerService;
 
 import com.datarpm.sigma.event.core.Event;
 import com.datarpm.sigma.event.core.Event.EventBuilder;
@@ -40,6 +42,16 @@ import junit.framework.TestCase;
  *
  */
 public class EventEngineTest extends TestCase {
+
+  private BrokerService broker;
+
+  @Override
+  protected void setUp() throws Exception {
+    broker = new BrokerService();
+    broker.addConnector("tcp://localhost:61616");
+    broker.start();
+    super.setUp();
+  }
 
   public void testSystemEventPublish() throws InterruptedException {
     final AtomicBoolean eventMatched = new AtomicBoolean(false);
@@ -124,5 +136,11 @@ public class EventEngineTest extends TestCase {
     UserEventDetail userEventDetail = eventDetail.getUserEventDetail();
     System.out.println("User Event : {browser = " + userEventDetail.getUserAgent() + ", userId = "
         + userEventDetail.getUserId() + ", action = " + userEventDetail.getActionUrl() + "}");
+  }
+  
+  @Override
+  protected void tearDown() throws Exception {
+    broker.stop();
+    super.tearDown();
   }
 }

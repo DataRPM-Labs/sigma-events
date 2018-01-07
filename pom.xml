@@ -24,6 +24,7 @@
 		<module>core</module>
 		<module>server</module>
 		<module>model</module>
+		<module>assembly</module>
 	</modules>
 
 	<properties>

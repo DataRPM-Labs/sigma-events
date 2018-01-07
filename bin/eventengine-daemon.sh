@@ -35,9 +35,7 @@ SIGMA_EVENTENGINE_PID="${SIGMA_EVENTENGINE_PID_DIR}/eventengine-${SIGMA_EVENTENG
 SIGMA_EVENTENGINE_MAIN=com.datarpm.sigma.event.server.EventEngineServer
 JAVA_OPTS+=" -Deventengine.log.file=${SIGMA_EVENTENGINE_LOGFILE}"
 
-addJarInDir "${SIGMA_EVENTENGINE_HOME}/server/target/jars"
-serverJar=`find ${SIGMA_EVENTENGINE_HOME}/server/target/ -name event-engine-server-*.jar`
-SIGMA_EVENTENGINE_CLASSPATH="${serverJar}:$SIGMA_EVENTENGINE_CLASSPATH"
+addJarInDir "${SIGMA_EVENTENGINE_HOME}/lib"
 
 CLASSPATH+=":${SIGMA_EVENTENGINE_CLASSPATH}"
 
