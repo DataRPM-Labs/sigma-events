@@ -37,4 +37,4 @@ for eachModule in ${modules[@]}; do
  batchBuildArg="${batchBuildArg} -Dproject.rel.${projectGroupId}:${eachModule}=${releaseVersion} -Dproject.dev.${projectGroupId}:${eachModule}=${devReleaseVersion}" 
 done
 
-mvn --batch-mode release:clean release:prepare -Dmaven.test.skip=true -Dtag=$releaseTag -DdevelopmentVersion=$devReleaseVersion ${batchBuildArg} && mvn release:perform
+mvn --batch-mode verify gpg:sign release:clean release:prepare -Dmaven.test.skip=true -Dtag=$releaseTag -DdevelopmentVersion=$devReleaseVersion ${batchBuildArg} && mvn verify gpg:sign release:perform
