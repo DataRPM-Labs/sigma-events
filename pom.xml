@@ -13,7 +13,7 @@
 	<groupId>com.datarpm.sigma</groupId>
 	<artifactId>event-engine</artifactId>
 	<packaging>pom</packaging>
-	<version>1.3-SNAPSHOT</version>
+	<version>1.2-SNAPSHOT</version>
 	<name>Events Engine</name>
 	<description>Event Processing Engine project</description>
 	<url>https://github.com/DataRPM-Labs/sigma-events</url>
