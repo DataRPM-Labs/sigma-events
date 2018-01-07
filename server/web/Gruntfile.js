@@ -19,7 +19,7 @@ module.exports = function (grunt) {
       },
       dist: {
         files: {
-          '<%= config.dist %>/js/event-engine-<%= pkg.version %>.min.js': [
+          '<%= config.dist %>/js/event-engine.min.js': [
             '<%= config.app %>/**/*.js',
             '<%= bower.directory %>/reconnectingWebsocket/reconnecting-websocket.js',
           ]
