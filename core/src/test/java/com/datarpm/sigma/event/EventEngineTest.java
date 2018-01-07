@@ -22,8 +22,6 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import org.apache.activemq.broker.BrokerService;
-
 import com.datarpm.sigma.event.core.Event;
 import com.datarpm.sigma.event.core.Event.EventBuilder;
 import com.datarpm.sigma.event.core.EventCallBack;
@@ -34,6 +32,7 @@ import com.datarpm.sigma.event.core.EventMatchFilter;
 import com.datarpm.sigma.event.core.EventType;
 import com.datarpm.sigma.event.core.SystemEventDetail;
 import com.datarpm.sigma.event.core.UserEventDetail;
+import com.datarpm.sigma.event.core.channel.EmbeddedActiveMQService;
 
 import junit.framework.TestCase;
 
@@ -43,14 +42,9 @@ import junit.framework.TestCase;
  */
 public class EventEngineTest extends TestCase {
 
-  private BrokerService broker;
-
   @Override
   protected void setUp() throws Exception {
-    broker = new BrokerService();
-    broker.addConnector("tcp://localhost:61616");
-    broker.start();
-    super.setUp();
+    EmbeddedActiveMQService.INSTANCE.startService();
   }
 
   public void testSystemEventPublish() throws InterruptedException {
@@ -138,9 +132,4 @@ public class EventEngineTest extends TestCase {
         + userEventDetail.getUserId() + ", action = " + userEventDetail.getActionUrl() + "}");
   }
   
-  @Override
-  protected void tearDown() throws Exception {
-    broker.stop();
-    super.tearDown();
-  }
 }
