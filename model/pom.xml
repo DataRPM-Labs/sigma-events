@@ -10,7 +10,7 @@
 	<parent>
 		<groupId>com.datarpm.sigma</groupId>
 		<artifactId>event-engine</artifactId>
-		<version>1.5-SNAPSHOT</version>
+		<version>1.5</version>
 	</parent>
 	<artifactId>event-engine-model</artifactId>
 
