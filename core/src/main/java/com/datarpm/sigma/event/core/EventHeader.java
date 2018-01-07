@@ -18,6 +18,7 @@
  */
 package com.datarpm.sigma.event.core;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -101,6 +102,10 @@ public class EventHeader {
 
   public void setSkipPersistence(boolean skipPersistence) {
     this.skipPersistence = skipPersistence;
+  }
+
+  public void makeReadOnly() {
+    headers = Collections.unmodifiableMap(headers);
   }
 
 }

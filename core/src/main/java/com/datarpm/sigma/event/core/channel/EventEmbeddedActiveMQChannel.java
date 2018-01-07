@@ -134,6 +134,7 @@ class EventEmbeddedActiveMQChannel implements EventChannel, MessageListener {
     registryReadLock.lock();
     try {
       Event event = toEvent(message);
+      event.makeReadOnly();
       for (Entry<RegistryId, EventCallBack> eachEntry : registry.entrySet()) {
         workerThreadPool.execute(new EventCallbackTask(eachEntry, event));
       }
