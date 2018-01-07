@@ -32,11 +32,11 @@ import org.apache.hadoop.fs.Path;
 
 import com.datarpm.sigma.event.core.EventEnvironment;
 import com.datarpm.sigma.event.core.EventType;
-import com.datarpm.sigma.event.core.SystemEventDetail;
-import com.datarpm.sigma.event.core.UserEventDetail;
 import com.datarpm.sigma.event.model.EventDetailModel;
 import com.datarpm.sigma.event.model.EventHeaderModel;
 import com.datarpm.sigma.event.model.EventModel;
+import com.datarpm.sigma.event.model.SystemEventDetailModel;
+import com.datarpm.sigma.event.model.UserEventDetailModel;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -134,7 +134,7 @@ class HDFSEventWriter {
       recordBuilder.set(EventHDFSTableSchema.EVENT_TYPE, eventType.name());
       EventDetailModel eventDetail = event.getEventDetail();
       if (header.getEventType() == EventType.System) {
-        SystemEventDetail systemEventDetail = eventDetail.getSystemEventDetail();
+        SystemEventDetailModel systemEventDetail = eventDetail.getSystemEventDetail();
         // System Event
         recordBuilder.set(EventHDFSTableSchema.PROCESS_ID, systemEventDetail.getProcessId());
         recordBuilder.set(EventHDFSTableSchema.PROCESS_NAME, systemEventDetail.getProcessName());
@@ -145,7 +145,7 @@ class HDFSEventWriter {
         recordBuilder.set(EventHDFSTableSchema.MODULE_NAME, systemEventDetail.getModuleName());
         recordBuilder.set(EventHDFSTableSchema.ACTION, systemEventDetail.getAction());
       } else {
-        UserEventDetail userEventDetail = eventDetail.getUserEventDetail();
+        UserEventDetailModel userEventDetail = eventDetail.getUserEventDetail();
         // User Event
         recordBuilder.set(EventHDFSTableSchema.USER_ID, userEventDetail.getUserId());
         recordBuilder.set(EventHDFSTableSchema.USER_AGENT, userEventDetail.getUserAgent());

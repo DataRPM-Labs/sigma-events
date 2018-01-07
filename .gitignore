@@ -22,7 +22,10 @@ server/web/app/components
 .DS_Store
 server/web/dist
 *.log
-cache
+data/cache
+data
+model/data
+model/cache
 
 dependency-reduced-pom.xml
 

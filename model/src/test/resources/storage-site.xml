@@ -18,7 +18,7 @@
 <configuration>
 	<property>
 		<name>events.storage</name>
-		<value>mongodb</value> <!-- mongodb -->
+		<value>default</value> <!-- mongodb -->
 	</property>
 	<property>
 		<name>events.storage.mongodb.host</name>

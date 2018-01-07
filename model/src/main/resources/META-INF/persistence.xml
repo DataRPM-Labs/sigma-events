@@ -19,11 +19,11 @@
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0">
 
-    <persistence-unit name="event-engine-jpa" transaction-type="JTA">
+    <persistence-unit name="event-engine-nosql" transaction-type="JTA">
         <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
-        <properties>
-        		<property name="hibernate.search.default.directory_provider" value="filesystem" />
-			<property name="hibernate.search.default.indexBase" value="$SIGMA_EVENTENGINE_HOME/cache/index/" />
-        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="event-engine-rdbms" transaction-type="JTA">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
     </persistence-unit>
 </persistence>

@@ -24,6 +24,7 @@ import javax.transaction.NotSupportedException;
 import javax.transaction.SystemException;
 import javax.transaction.TransactionManager;
 
+import com.datarpm.sigma.event.model.PeristenceConfig;
 import com.datarpm.sigma.event.model.PersistencePropertyProvider;
 
 public class QueryBuilder<E> {
@@ -34,14 +35,15 @@ public class QueryBuilder<E> {
   public QueryBuilder(Class<E> entityClass) {
     this.entityClass = entityClass;
     tm = com.arjuna.ats.jta.TransactionManager.transactionManager();
-    Map<String, String> properties = new PersistencePropertyProvider().preparePersistenceConfig();
+    PeristenceConfig config = new PersistencePropertyProvider().preparePersistenceConfig();
+    Map<String, String> properties = config.getProperties();
     properties.put("hibernate.search.default.directory_provider", "filesystem");
-    String indexPath = "./cache/index/";
+    String indexPath = "./data/cache/index/";
     if (System.getenv("SIGMA_EVENTENGINE_HOME") != null) {
-      indexPath = System.getenv("SIGMA_EVENTENGINE_HOME") + "/cache/index/";
+      indexPath = System.getenv("SIGMA_EVENTENGINE_HOME") + "/data/cache/index/";
     }
     properties.put("hibernate.search.default.indexBase", indexPath);
-    emf = Persistence.createEntityManagerFactory("event-engine-jpa", properties);
+    emf = Persistence.createEntityManagerFactory(config.getPersistenceUnit(), properties);
   }
 
   public E create(E entity) throws NotSupportedException, SystemException {

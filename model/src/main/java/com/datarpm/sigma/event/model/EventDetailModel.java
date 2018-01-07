@@ -2,14 +2,14 @@
  * Copyright 2017 DataRPM
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License.  You may obtain a copy
- * of the License at
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
  * 
- *   http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
@@ -17,10 +17,11 @@ package com.datarpm.sigma.event.model;
 
 import java.util.Date;
 
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -37,10 +38,10 @@ public class EventDetailModel {
   private String id;
 
   private EventType eventType;
-  @Embedded
-  private SystemEventDetail systemEventDetail;
-  @Embedded
-  private UserEventDetail userEventDetail;
+  @OneToOne(orphanRemoval = true, fetch = FetchType.LAZY)
+  private SystemEventDetailModel systemEventDetail;
+  @OneToOne(orphanRemoval = true, fetch = FetchType.LAZY)
+  private UserEventDetailModel userEventDetail;
   private Date createdAt;
   private Date updatedAt;
 
@@ -48,10 +49,10 @@ public class EventDetailModel {
       UserEventDetail userEventDetail) {
     super();
     this.eventType = eventType;
-    this.systemEventDetail = systemEventDetail;
-    this.userEventDetail = userEventDetail;
+    this.systemEventDetail = new SystemEventDetailModel(systemEventDetail);
+    this.userEventDetail = new UserEventDetailModel(userEventDetail);
   }
-  
+
   public EventDetailModel() {
   }
 
@@ -71,19 +72,19 @@ public class EventDetailModel {
     this.eventType = eventType;
   }
 
-  public SystemEventDetail getSystemEventDetail() {
+  public SystemEventDetailModel getSystemEventDetail() {
     return systemEventDetail;
   }
 
-  public void setSystemEventDetail(SystemEventDetail systemEventDetail) {
+  public void setSystemEventDetail(SystemEventDetailModel systemEventDetail) {
     this.systemEventDetail = systemEventDetail;
   }
 
-  public UserEventDetail getUserEventDetail() {
+  public UserEventDetailModel getUserEventDetail() {
     return userEventDetail;
   }
 
-  public void setUserEventDetail(UserEventDetail userEventDetail) {
+  public void setUserEventDetail(UserEventDetailModel userEventDetail) {
     this.userEventDetail = userEventDetail;
   }
 

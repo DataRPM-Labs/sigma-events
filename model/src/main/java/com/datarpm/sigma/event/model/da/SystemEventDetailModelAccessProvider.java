@@ -13,12 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  ******************************************************************************/
-package com.datarpm.sigma.event.model;
+package com.datarpm.sigma.event.model.da;
 
-import com.datarpm.sigma.event.core.conf.Configuration;
+import com.datarpm.sigma.event.model.SystemEventDetailModel;
 
-public interface PersistencePropertyParser {
+public class SystemEventDetailModelAccessProvider extends QueryBuilder<SystemEventDetailModel> {
 
-  public PeristenceConfig parse(Configuration configuration);
+  public SystemEventDetailModelAccessProvider() {
+    super(SystemEventDetailModel.class);
+  }
 
 }
