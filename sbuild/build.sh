@@ -20,4 +20,3 @@ cd $scriptHome/../;
 projectHome=$scriptHome/../
 
 mvn clean install verify gpg:sign
-cd $projectHome/server/web && npm update && grunt
