@@ -2,7 +2,7 @@
 
 ## Quick start
 #### Install
-1. Download event-engine-1.6-bin.tar.gz from [releases](https://github.com/DataRPM-Labs/sigma-events/releases) page
+1. Download <b>event-engine-1.6-bin.tar.gz</b> from [releases](https://github.com/DataRPM-Labs/sigma-events/releases) page
 2. Extract
 ```
 tar -xzf event-engine-1.6-bin.tar.gz
