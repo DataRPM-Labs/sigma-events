@@ -2,16 +2,18 @@
 
 ## Quick start
 #### Install
-1. Download event-engine-1.6-bin.tar.gz from from [releases](https://github.com/DataRPM-Labs/sigma-events/releases) page
+1. Download event-engine-1.6-bin.tar.gz from [releases](https://github.com/DataRPM-Labs/sigma-events/releases) page
 2. Extract
 ```
 tar -xzf event-engine-1.6-bin.tar.gz
 ```
-3. Start service
+3. Set the SIGMA_EVENTENGINE_HOME environment variable to point to extracted path
+4. Start service
 ```
 cd event-engine-1.6/
 ./bin/eventengine-daemon.sh start
 ```
+Starts websocket listener on port 8082 (ws://locahost:8082/event-stream)
 ## Clients
 #### Java
 
@@ -37,6 +39,8 @@ eventBuilder.addHeader("<headerKey>", "<headerValue>");
 // Marks it as system event
 SystemEventDetail systemEventDetails = new SystemEventDetail();
 eventBuilder.generateSystemEvent(systemEventDetails);
+// Event parameters
+eventBuilder.addParam("<paramKey>", "<paramValue>");
 eventBuilder.fireEvent();
 ```
 
