@@ -61,8 +61,8 @@ class HDFSEventWriter {
 
   public HDFSEventWriter() {
     Properties archiverConfig = EventEnvironment.INSTANCE.getArchiverConfig();
-    hdfsUrl = archiverConfig.getProperty("event.archiver.hdfs.address", "hdfs://127.0.0.1:8020");
-    archivePath = archiverConfig.getProperty("event.archiver.path", "/user/datarpm/data/events/");
+    hdfsUrl = archiverConfig.getProperty("events.archive.hdfs.address", "hdfs://127.0.0.1:8020");
+    archivePath = archiverConfig.getProperty("events.archive.hdfs.path", "/user/datarpm/data/events/");
     hadoopConfiguration = new Configuration();
     hadoopConfiguration.set("dfs.http.address", hdfsUrl);
     hadoopConfiguration.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
