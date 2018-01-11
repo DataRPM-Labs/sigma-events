@@ -23,7 +23,7 @@
 
 	<property>
 		<name>events.channel.default.port</name>
-		<value>61616</value>
+		<value>61617</value>
 	</property>
 	
 	<property>
