@@ -19,4 +19,7 @@ scriptHome="`cd "$scriptHome"; pwd`"
 cd $scriptHome/../;
 projectHome=$scriptHome/../
 
+unset $SIGMA_EVENTENGINE_HOME
+unset $SIGMA_EVENTENGINE_CONF_DIR
+
 mvn clean install verify gpg:sign

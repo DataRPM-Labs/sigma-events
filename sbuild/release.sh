@@ -37,4 +37,7 @@ for eachModule in ${modules[@]}; do
  batchBuildArg="${batchBuildArg} -Dproject.rel.${projectGroupId}:${eachModule}=${releaseVersion} -Dproject.dev.${projectGroupId}:${eachModule}=${devReleaseVersion}" 
 done
 
+unset $SIGMA_EVENTENGINE_HOME
+unset $SIGMA_EVENTENGINE_CONF_DIR
+
 mvn --batch-mode release:clean release:prepare -Dmaven.test.skip=true -Dtag=$releaseTag -DdevelopmentVersion=$devReleaseVersion ${batchBuildArg} && mvn package gpg:sign release:perform
